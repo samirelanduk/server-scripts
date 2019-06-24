@@ -15,4 +15,4 @@ sitename="-d $sitename"
 
 echo $sitename
 
-sudo letsencrypt certonly -a webroot --webroot-path=/var/www/html $sitename
+letsencrypt certonly -a webroot --webroot-path=/var/www/html $sitename

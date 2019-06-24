@@ -3,7 +3,7 @@ if [[ $# -eq 0 ]] ; then
     exit 0
 fi
 
-filename=./ssl-$1.conf
+filename="/etc/nginx/snippets/ssl-$1.conf"
 
 touch $filename
 
