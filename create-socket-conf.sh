@@ -20,23 +20,21 @@ if [[ $dotcount -eq 1 ]] ; then
     doublesitename="$sitename www.$sitename"
 fi
 
-touch $filename
-
-cat > $filename <<- EOM
+cat > /etc/nginx/sites-available/$filename <<- EOM
 server {
     listen 80;
     listen [::]:80;
     server_name $doublesitename;
-    return 301 https://$server_name$request_uri;
+    return 301 https://\$server_name\$request_uri;
     client_max_body_size 50M;
 }
 
 server {
     client_max_body_size 50M;
     location / {
-        proxy_set_header Host $host;
-        proxy_set_header REMOTE_ADDR $remote_addr;
-        proxy_set_header X_FORWARDED_FOR $remote_addr;
+        proxy_set_header Host \$host;
+        proxy_set_header REMOTE_ADDR \$remote_addr;
+        proxy_set_header X_FORWARDED_FOR \$remote_addr;
         proxy_pass http://unix:/tmp/$sitename.socket;
     }
     location /static {

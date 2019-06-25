@@ -27,4 +27,7 @@ rm /etc/nginx/snippets/ssl-$1.conf 2>/dev/null
 rm /etc/nginx/sites-available/$1 2>/dev/null 
 rm /etc/nginx/sites-enabled/$1 2>/dev/null 
 
-rm -r $location/$1 2>/dev/null 
+rm -r $location/$1 2>/dev/null
+
+rm /etc/systemd/system/$1.service
+systemctl daemon-reload
