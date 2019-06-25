@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if (( $EUID != 0 )); then
+    echo "I only take orders from superusers - use sudo"
+    exit
+fi
 if [[ $# -eq 0 ]] ; then
     echo 'Need website name'
     exit 0
