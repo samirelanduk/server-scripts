@@ -11,8 +11,10 @@ if [[ $# -eq 2 ]] ; then
     location=$2
 fi
 
-./create-certificate.sh $1
-./create-ssl-conf.sh $1
-./create-static-conf.sh $1 $location
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+$DIR/create-certificate.sh $1
+$DIR/create-ssl-conf.sh $1
+$DIR/create-static-conf.sh $1 $location
 ln -s /etc/nginx/sites-available/$1 /etc/nginx/sites-enabled/$1
-./create-static-directory.sh $1 $location
+$DIR/create-static-directory.sh $1 $location
