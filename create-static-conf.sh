@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [[ $# -eq 0 ]] ; then
     echo 'Need website name'
     exit 0
@@ -18,14 +20,12 @@ if [[ $dotcount -eq 1 ]] ; then
     doublesitename="$sitename www.$sitename"
 fi
 
-touch $filename
-
-cat > $filename <<- EOM
+cat > /etc/nginx/sites-available/$filename <<- EOM
 server {
     listen 80;
     listen [::]:80;
     server_name $doublesitename;
-    return 301 https://$server_name$request_uri;
+    return 301 https://\$server_name\$request_uri;
     client_max_body_size 50M;
 }
 

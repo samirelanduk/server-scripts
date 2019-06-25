@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [[ $# -eq 0 ]] ; then
     echo 'Need website name'
     exit 0
