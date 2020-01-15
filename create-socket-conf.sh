@@ -53,5 +53,6 @@ server {
     listen [::]:443 ssl http2;
     include snippets/ssl-$sitename.conf;
     include snippets/ssl-params.conf;
+    add_header X-Frame-Options DENY;
 }
 EOM
