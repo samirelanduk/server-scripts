@@ -5,7 +5,7 @@ if (( $EUID != 0 )); then
     exit
 fi
 
-certbot-auto renew
+certbot renew
 
 nginx -t 2>/dev/null > /dev/null
 if [[ $? == 0 ]]; then

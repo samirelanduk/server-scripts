@@ -15,4 +15,4 @@ fi
 
 sitename="-d $sitename"
 
-letsencrypt certonly -a webroot --webroot-path=/var/www/html $sitename
+certbot certonly -a webroot --webroot-path=/var/www/html $sitename
